@@ -1,4 +1,5 @@
-CREATE DATABASE VOLCAUSE;
+DROP DATABASE VOLCAUSE_415;
+CREATE DATABASE VOLCAUSE_415;
 
 USE VOLCAUSE;
 
@@ -15,6 +16,15 @@ CREATE TABLE MEMBERS_415(
 
 );
 
+
+CREATE TABLE CONTACT_415(
+    Member_ID int not null,
+    Phone varchar(10),
+    
+    CONSTRAINT chk_phone CHECK (phone not like '%[^0-9]%'), 
+    FOREIGN KEY(Member_ID) REFERENCES MEMBERS_415(Member_ID) on DELETE CASCADE
+
+);
 
 CREATE TABLE ORGANIZATION_415(
     Org_ID int not null,
@@ -51,6 +61,16 @@ CREATE TABLE Manager_415(
     PRIMARY KEY (Manager_ID),
     FOREIGN KEY(Manager_ID) REFERENCES MEMBERS_415(Member_ID) on DELETE CASCADE,
     FOREIGN KEY(Event_ID) REFERENCES Event_415(Event_ID) on DELETE CASCADE
+
+);
+
+
+CREATE TABLE Volunteers_415(
+    Event_ID int not null,
+    Member_ID int not null,
+
+    FOREIGN KEY(Event_ID) REFERENCES Event_415(Event_ID) on DELETE CASCADE,
+    FOREIGN KEY(Member_ID) REFERENCES MEMBERS_415(Member_ID) on DELETE CASCADE
 
 );
 
