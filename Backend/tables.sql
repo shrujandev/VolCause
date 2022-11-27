@@ -27,7 +27,7 @@ CREATE TABLE CONTACT_415(
 );
 
 CREATE TABLE ORGANIZATION_415(
-    Org_ID int not null,
+    Org_ID varchar(255) not null,
     Org_Name varchar(255),
     Org_Manager varchar(255),
 
@@ -35,15 +35,15 @@ CREATE TABLE ORGANIZATION_415(
 );
 
 CREATE TABLE Event_415(
-    Event_ID int not null,
-    Manager_ID int not null,
+    Event_ID VARCHAR(255) not null,
     Event_Name varchar(255) not null,
+    Manager_ID int not null,
     Event_Type varchar(255),
     Event_Date DATE not null,
     Event_Time TIME,
     Venue varchar(255),
     Volunteer_count int,
-    Org_ID int,
+    Org_ID VARCHAR(255) not null,
 
     PRIMARY KEY (Event_ID),
     FOREIGN KEY(Manager_ID) REFERENCES MEMBERS_415(Member_ID) on DELETE CASCADE,
@@ -53,12 +53,12 @@ CREATE TABLE Event_415(
 );
 
 CREATE TABLE Manager_415(
-    Event_Name varchar(255),
-    Manager_Name varchar(255),
     Manager_ID int not null,
-    Event_ID int not null,
+    Manager_Name varchar(255),
+    Event_ID varchar(255) not null,
+    Event_Name varchar(255),
 
-    PRIMARY KEY (Manager_ID),
+    PRIMARY KEY (Manager_ID,Event_ID),
     FOREIGN KEY(Manager_ID) REFERENCES MEMBERS_415(Member_ID) on DELETE CASCADE,
     FOREIGN KEY(Event_ID) REFERENCES Event_415(Event_ID) on DELETE CASCADE
 
@@ -66,7 +66,7 @@ CREATE TABLE Manager_415(
 
 
 CREATE TABLE Volunteers_415(
-    Event_ID int not null,
+    Event_ID varchar(255) not null,
     Member_ID int not null,
 
     FOREIGN KEY(Event_ID) REFERENCES Event_415(Event_ID) on DELETE CASCADE,
