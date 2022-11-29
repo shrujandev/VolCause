@@ -1,0 +1,589 @@
+PowerShell 7.3.0
+Loading personal and system profiles took 995ms.
+  ~    ≢    z bin
+  bin    ./mysql -u root -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+  bin    ./mysql -u root -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+  bin    ./mysql -u root -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+  bin    ./mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use volcause_415
+Database changed
+MariaDB [volcause_415]> show tables;
++------------------------+
+| Tables_in_volcause_415 |
++------------------------+
+| contact_415            |
+| event_415              |
+| manager_415            |
+| members_415            |
+| organization_415       |
+| volunteers_415         |
++------------------------+
+6 rows in set (0.013 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDURE getAge()
+    -> BEGIN
+    -> UPDATE Member_415 SET Age= DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), '%Y') + 0;
+    -> END;$$
+Query OK, 0 rows affected (0.030 sec)
+
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> select * from member_415;
+ERROR 1146 (42S02): Table 'volcause_415.member_415' doesn't exist
+MariaDB [volcause_415]> select * from members_415;
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+| Member_ID | Name                   | Gender | DOB        | Age  | Blood_group | Address                |
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+|   2022001 | Anoushka Vemireddy     | Female | 1992-05-15 |    0 | A+          | ABC , street Bangalore |
+|   2022002 | Gautham Krithiwas      | Male   | 1998-07-12 |    0 | B-          | DEF , street Bangalore |
+|   2022003 | Harikrishnan G         | Male   | 1989-09-11 |    0 | O+          | GHI , street Bangalore |
+|   2022004 | Hitesh Singh           | Male   | 1999-03-23 |    0 | AB-         | JKL , street Bangalore |
+|   2022005 | ANEESH K B             | Male   | 2002-01-01 |    0 | A-          | MNO, street Bangalore  |
+|   2022006 | AVANISH SHENOY         | Male   | 2000-03-19 |    0 | A+          | PQR , street Bangalore |
+|   2022007 | B MONISH MOGER         | Male   | 1994-10-04 |    0 | B+          | TUV , street Bangalore |
+|   2022008 | AYUSH SINHA            | Male   | 2001-08-09 |    0 | A+          | WXY , street Bangalore |
+|   2022009 | Deepthi Bommisetty     | Female | 2003-09-17 |    0 | B+          | ZGY , street Bangalore |
+|   2022010 | Hansini                | Female | 1991-09-03 |    0 | O-          | MKS , street Bangalore |
+|   2022011 | G Roshni               | Female | 1995-02-14 |    0 | AB-         | POA , street Bangalore |
+|   2022012 | Chaitra                | Female | 1998-12-23 |    0 | AB+         | BUS , street Bangalore |
+|   2022013 | K Srinivasa Ankita     | Female | 1996-12-31 |    0 | AB+         | RGP , street Bangalore |
+|   2022014 | Pannuru Sidhvi         | Female | 2002-10-24 |    0 | B+          | XSP , street Bangalore |
+|   2022015 | Lia Jane Dsouza        | Female | 2003-11-03 |    0 | A+          | IAT , street Bangalore |
+|   2022016 | Gade Vishnupriya Reddy | Female | 1989-04-16 |    0 | O+          | ZTC , street Bangalore |
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+16 rows in set (0.048 sec)
+
+MariaDB [volcause_415]> drop procedure getAge();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '()' at line 1
+MariaDB [volcause_415]> drop procedure getAge;
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDURE getAge()
+    -> BEGIN
+    -> UPDATE Members_415 SET Age= DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), '%Y') + 0;
+    -> END;$$
+Query OK, 0 rows affected (0.009 sec)
+
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> call getage();
+Query OK, 16 rows affected (0.021 sec)
+
+MariaDB [volcause_415]> select * from members_415;
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+| Member_ID | Name                   | Gender | DOB        | Age  | Blood_group | Address                |
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+|   2022001 | Anoushka Vemireddy     | Female | 1992-05-15 |   30 | A+          | ABC , street Bangalore |
+|   2022002 | Gautham Krithiwas      | Male   | 1998-07-12 |   24 | B-          | DEF , street Bangalore |
+|   2022003 | Harikrishnan G         | Male   | 1989-09-11 |   33 | O+          | GHI , street Bangalore |
+|   2022004 | Hitesh Singh           | Male   | 1999-03-23 |   23 | AB-         | JKL , street Bangalore |
+|   2022005 | ANEESH K B             | Male   | 2002-01-01 |   20 | A-          | MNO, street Bangalore  |
+|   2022006 | AVANISH SHENOY         | Male   | 2000-03-19 |   22 | A+          | PQR , street Bangalore |
+|   2022007 | B MONISH MOGER         | Male   | 1994-10-04 |   28 | B+          | TUV , street Bangalore |
+|   2022008 | AYUSH SINHA            | Male   | 2001-08-09 |   21 | A+          | WXY , street Bangalore |
+|   2022009 | Deepthi Bommisetty     | Female | 2003-09-17 |   19 | B+          | ZGY , street Bangalore |
+|   2022010 | Hansini                | Female | 1991-09-03 |   31 | O-          | MKS , street Bangalore |
+|   2022011 | G Roshni               | Female | 1995-02-14 |   27 | AB-         | POA , street Bangalore |
+|   2022012 | Chaitra                | Female | 1998-12-23 |   23 | AB+         | BUS , street Bangalore |
+|   2022013 | K Srinivasa Ankita     | Female | 1996-12-31 |   25 | AB+         | RGP , street Bangalore |
+|   2022014 | Pannuru Sidhvi         | Female | 2002-10-24 |   20 | B+          | XSP , street Bangalore |
+|   2022015 | Lia Jane Dsouza        | Female | 2003-11-03 |   19 | A+          | IAT , street Bangalore |
+|   2022016 | Gade Vishnupriya Reddy | Female | 1989-04-16 |   33 | O+          | ZTC , street Bangalore |
++-----------+------------------------+--------+------------+------+-------------+------------------------+
+16 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select * from event_415;
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+| Event_ID | Event_Name       | Manager_ID | Event_Type  | Event_Date | Event_Time | Venue                          | Volunteer_count | Org_ID |
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+| E22001   | Blood Donation   |    2022007 | Health      | 2022-09-13 | 08:00:00   | PES University Bangalore       |               0 | ORG004 |
+| E22002   | English for all  |    2022010 | Education   | 2023-05-10 | 09:30:00   | Government School Banashankari |               0 | ORG005 |
+| E22003   | Plantation Drive |    2022003 | Environment | 2022-09-13 | 06:00:00   | Cubbon Park, Bangalore         |               0 | ORG002 |
+| E22004   | Health Drive     |    2022009 | Health      | 2023-01-17 | 10:00:00   | RV college Bangalore           |               0 | ORG003 |
+| E22005   | Swatch Barath    |    2022003 | Environment | 2023-08-13 | 07:00:00   | Lalbagh park                   |               0 | ORG001 |
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+5 rows in set (0.010 sec)
+
+MariaDB [volcause_415]> select E.Name as Event_Name, count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.Event_ID =V.Event_ID group by(V.Event_ID);
+ERROR 1054 (42S22): Unknown column 'E.Name' in 'field list'
+MariaDB [volcause_415]> select E.Event_Name as Event_Name, count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
++------------------+--------------------+
+| Event_Name       | count(V.Member_ID) |
++------------------+--------------------+
+| Blood Donation   |                  7 |
+| English for all  |                  7 |
+| Plantation Drive |                  4 |
+| Health Drive     |                  5 |
+| Swatch Barath    |                 12 |
++------------------+--------------------+
+5 rows in set (0.016 sec)
+
+MariaDB [volcause_415]> select * from manager_415;
++------------+--------------------+----------+------------------+
+| Manager_ID | Manager_Name       | Event_ID | Event_Name       |
++------------+--------------------+----------+------------------+
+|    2022003 | Harikrishnan G     | E22003   | Plantation Drive |
+|    2022003 | Harikrishnan G     | E22005   | Swatch Barath    |
+|    2022007 | B MONISH MOGER     | E22001   | Blood Donation   |
+|    2022009 | Deepthi Bommisetty | E22004   | Health Drive     |
+|    2022010 | Hansini            | E22002   | English for all  |
++------------+--------------------+----------+------------------+
+5 rows in set (0.222 sec)
+
+MariaDB [volcause_415]> select E.Name as Event_Event_Name, count(V.Member_ID) as Number_of_Volunteers
+    -> from
+    -> Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
+ERROR 1054 (42S22): Unknown column 'E.Name' in 'field list'
+MariaDB [volcause_415]> select E.Name as Event.Event_Name, count(V.Member_ID) as Number_of_Volunteers
+    -> from
+    -> Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.Event_Name, count(V.Member_ID) as Number_of_Volunteers
+from
+Event_415 as E j...' at line 1
+MariaDB [volcause_415]> select E.Event_Name as Event_Name, count(V.Member_ID) as Number_of_Volunteers
+    -> from
+    -> Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
++------------------+----------------------+
+| Event_Name       | Number_of_Volunteers |
++------------------+----------------------+
+| Blood Donation   |                    7 |
+| English for all  |                    7 |
+| Plantation Drive |                    4 |
+| Health Drive     |                    5 |
+| Swatch Barath    |                   12 |
++------------------+----------------------+
+5 rows in set (0.014 sec)
+
+MariaDB [volcause_415]> select M.Name as Manager_Name,count(M.Event_ID) as Events from Manager_415 as M group by (Manager_ID);
+ERROR 1054 (42S22): Unknown column 'M.Name' in 'field list'
+MariaDB [volcause_415]> select M.Manager_Name as Manager_Name,count(M.Event_ID) as Events from Manager_415 as M group by (Manager_ID);
++--------------------+--------+
+| Manager_Name       | Events |
++--------------------+--------+
+| Harikrishnan G     |      2 |
+| B MONISH MOGER     |      1 |
+| Deepthi Bommisetty |      1 |
+| Hansini            |      1 |
++--------------------+--------+
+4 rows in set (0.005 sec)
+
+MariaDB [volcause_415]> select M.name as Name,count(E.event_ID) from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (E.Member_ID);
++------------------------+-------------------+
+| Name                   | count(E.event_ID) |
++------------------------+-------------------+
+| Anoushka Vemireddy     |                 3 |
+| Gautham Krithiwas      |                 2 |
+| Harikrishnan G         |                 3 |
+| Hitesh Singh           |                 2 |
+| ANEESH K B             |                 3 |
+| AVANISH SHENOY         |                 2 |
+| B MONISH MOGER         |                 3 |
+| AYUSH SINHA            |                 2 |
+| Deepthi Bommisetty     |                 2 |
+| Hansini                |                 1 |
+| Chaitra                |                 2 |
+| K Srinivasa Ankita     |                 3 |
+| Pannuru Sidhvi         |                 2 |
+| Lia Jane Dsouza        |                 2 |
+| Gade Vishnupriya Reddy |                 3 |
++------------------------+-------------------+
+15 rows in set (0.005 sec)
+
+MariaDB [volcause_415]> select M.name as Name,count(E.event_ID) from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
++------------------------+-------------------+
+| Name                   | count(E.event_ID) |
++------------------------+-------------------+
+| Anoushka Vemireddy     |                 3 |
+| Gautham Krithiwas      |                 2 |
+| Harikrishnan G         |                 3 |
+| Hitesh Singh           |                 2 |
+| ANEESH K B             |                 3 |
+| AVANISH SHENOY         |                 2 |
+| B MONISH MOGER         |                 3 |
+| AYUSH SINHA            |                 2 |
+| Deepthi Bommisetty     |                 2 |
+| Hansini                |                 1 |
+| Chaitra                |                 2 |
+| K Srinivasa Ankita     |                 3 |
+| Pannuru Sidhvi         |                 2 |
+| Lia Jane Dsouza        |                 2 |
+| Gade Vishnupriya Reddy |                 3 |
++------------------------+-------------------+
+15 rows in set (0.006 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+-------------------+
+| Member_ID | Name                   | count(E.event_ID) |
++-----------+------------------------+-------------------+
+|   2022001 | Anoushka Vemireddy     |                 3 |
+|   2022002 | Gautham Krithiwas      |                 2 |
+|   2022003 | Harikrishnan G         |                 3 |
+|   2022004 | Hitesh Singh           |                 2 |
+|   2022005 | ANEESH K B             |                 3 |
+|   2022006 | AVANISH SHENOY         |                 2 |
+|   2022007 | B MONISH MOGER         |                 3 |
+|   2022008 | AYUSH SINHA            |                 2 |
+|   2022009 | Deepthi Bommisetty     |                 2 |
+|   2022010 | Hansini                |                 1 |
+|   2022012 | Chaitra                |                 2 |
+|   2022013 | K Srinivasa Ankita     |                 3 |
+|   2022014 | Pannuru Sidhvi         |                 2 |
+|   2022015 | Lia Jane Dsouza        |                 2 |
+|   2022016 | Gade Vishnupriya Reddy |                 3 |
++-----------+------------------------+-------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) from Members_415 as M join Volunteers_415 as E group by (M.Member_ID);
++-----------+------------------------+-------------------+
+| Member_ID | Name                   | count(E.event_ID) |
++-----------+------------------------+-------------------+
+|   2022001 | Anoushka Vemireddy     |                35 |
+|   2022002 | Gautham Krithiwas      |                35 |
+|   2022003 | Harikrishnan G         |                35 |
+|   2022004 | Hitesh Singh           |                35 |
+|   2022005 | ANEESH K B             |                35 |
+|   2022006 | AVANISH SHENOY         |                35 |
+|   2022007 | B MONISH MOGER         |                35 |
+|   2022008 | AYUSH SINHA            |                35 |
+|   2022009 | Deepthi Bommisetty     |                35 |
+|   2022010 | Hansini                |                35 |
+|   2022011 | G Roshni               |                35 |
+|   2022012 | Chaitra                |                35 |
+|   2022013 | K Srinivasa Ankita     |                35 |
+|   2022014 | Pannuru Sidhvi         |                35 |
+|   2022015 | Lia Jane Dsouza        |                35 |
+|   2022016 | Gade Vishnupriya Reddy |                35 |
++-----------+------------------------+-------------------+
+16 rows in set (0.004 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) from Members_415 as M left join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where m.Member_ID = E.Member_ID group by (M.Member_ID)' at line 1
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+-------------------+
+| Member_ID | Name                   | count(E.event_ID) |
++-----------+------------------------+-------------------+
+|   2022001 | Anoushka Vemireddy     |                 3 |
+|   2022002 | Gautham Krithiwas      |                 2 |
+|   2022003 | Harikrishnan G         |                 3 |
+|   2022004 | Hitesh Singh           |                 2 |
+|   2022005 | ANEESH K B             |                 3 |
+|   2022006 | AVANISH SHENOY         |                 2 |
+|   2022007 | B MONISH MOGER         |                 3 |
+|   2022008 | AYUSH SINHA            |                 2 |
+|   2022009 | Deepthi Bommisetty     |                 2 |
+|   2022010 | Hansini                |                 1 |
+|   2022012 | Chaitra                |                 2 |
+|   2022013 | K Srinivasa Ankita     |                 3 |
+|   2022014 | Pannuru Sidhvi         |                 2 |
+|   2022015 | Lia Jane Dsouza        |                 2 |
+|   2022016 | Gade Vishnupriya Reddy |                 3 |
++-----------+------------------------+-------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events
+    -> from Members_415 as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where m.Member_ID = E.Member_ID group by (M.Member_ID)' at line 2
+MariaDB [volcause_415]> from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event...' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID grou...' at line 1
+MariaDB [volcause_415]> from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event...' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Mem...' at line 1
+MariaDB [volcause_415]> from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID) as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Members_415 select M.Member_Id as Member_ID,M.name as Name,count(E.event...' at line 1
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left outer join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where m.Member_ID = E.Member_ID group by (M.Member_ID)' at line 1
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+------------------+
+| Member_ID | Name                   | Number_of_Events |
++-----------+------------------------+------------------+
+|   2022001 | Anoushka Vemireddy     |                3 |
+|   2022002 | Gautham Krithiwas      |                2 |
+|   2022003 | Harikrishnan G         |                3 |
+|   2022004 | Hitesh Singh           |                2 |
+|   2022005 | ANEESH K B             |                3 |
+|   2022006 | AVANISH SHENOY         |                2 |
+|   2022007 | B MONISH MOGER         |                3 |
+|   2022008 | AYUSH SINHA            |                2 |
+|   2022009 | Deepthi Bommisetty     |                2 |
+|   2022010 | Hansini                |                1 |
+|   2022012 | Chaitra                |                2 |
+|   2022013 | K Srinivasa Ankita     |                3 |
+|   2022014 | Pannuru Sidhvi         |                2 |
+|   2022015 | Lia Jane Dsouza        |                2 |
+|   2022016 | Gade Vishnupriya Reddy |                3 |
++-----------+------------------------+------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M right join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where m.Member_ID = E.Member_ID group by (M.Member_ID)' at line 1
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where m.Member_ID = E.Member_ID group by (M.Member_ID)' at line 1
+MariaDB [volcause_415]> show tables;
++------------------------+
+| Tables_in_volcause_415 |
++------------------------+
+| contact_415            |
+| event_415              |
+| manager_415            |
+| members_415            |
+| organization_415       |
+| volunteers_415         |
++------------------------+
+6 rows in set (0.011 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M join Volunteers_415 as E where m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+------------------+
+| Member_ID | Name                   | Number_of_Events |
++-----------+------------------------+------------------+
+|   2022001 | Anoushka Vemireddy     |                3 |
+|   2022002 | Gautham Krithiwas      |                2 |
+|   2022003 | Harikrishnan G         |                3 |
+|   2022004 | Hitesh Singh           |                2 |
+|   2022005 | ANEESH K B             |                3 |
+|   2022006 | AVANISH SHENOY         |                2 |
+|   2022007 | B MONISH MOGER         |                3 |
+|   2022008 | AYUSH SINHA            |                2 |
+|   2022009 | Deepthi Bommisetty     |                2 |
+|   2022010 | Hansini                |                1 |
+|   2022012 | Chaitra                |                2 |
+|   2022013 | K Srinivasa Ankita     |                3 |
+|   2022014 | Pannuru Sidhvi         |                2 |
+|   2022015 | Lia Jane Dsouza        |                2 |
+|   2022016 | Gade Vishnupriya Reddy |                3 |
++-----------+------------------------+------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left join Volunteers_415 as E on m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+------------------+
+| Member_ID | Name                   | Number_of_Events |
++-----------+------------------------+------------------+
+|   2022001 | Anoushka Vemireddy     |                3 |
+|   2022002 | Gautham Krithiwas      |                2 |
+|   2022003 | Harikrishnan G         |                3 |
+|   2022004 | Hitesh Singh           |                2 |
+|   2022005 | ANEESH K B             |                3 |
+|   2022006 | AVANISH SHENOY         |                2 |
+|   2022007 | B MONISH MOGER         |                3 |
+|   2022008 | AYUSH SINHA            |                2 |
+|   2022009 | Deepthi Bommisetty     |                2 |
+|   2022010 | Hansini                |                1 |
+|   2022011 | G Roshni               |                0 |
+|   2022012 | Chaitra                |                2 |
+|   2022013 | K Srinivasa Ankita     |                3 |
+|   2022014 | Pannuru Sidhvi         |                2 |
+|   2022015 | Lia Jane Dsouza        |                2 |
+|   2022016 | Gade Vishnupriya Reddy |                3 |
++-----------+------------------------+------------------+
+16 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left join Volunteers_415 as E on m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+------------------+
+| Member_ID | Name                   | Number_of_Events |
++-----------+------------------------+------------------+
+|   2022001 | Anoushka Vemireddy     |                3 |
+|   2022002 | Gautham Krithiwas      |                2 |
+|   2022003 | Harikrishnan G         |                3 |
+|   2022004 | Hitesh Singh           |                2 |
+|   2022005 | ANEESH K B             |                3 |
+|   2022006 | AVANISH SHENOY         |                2 |
+|   2022007 | B MONISH MOGER         |                3 |
+|   2022008 | AYUSH SINHA            |                2 |
+|   2022009 | Deepthi Bommisetty     |                2 |
+|   2022010 | Hansini                |                1 |
+|   2022011 | G Roshni               |                0 |
+|   2022012 | Chaitra                |                2 |
+|   2022013 | K Srinivasa Ankita     |                3 |
+|   2022014 | Pannuru Sidhvi         |                2 |
+|   2022015 | Lia Jane Dsouza        |                2 |
+|   2022016 | Gade Vishnupriya Reddy |                3 |
++-----------+------------------------+------------------+
+16 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Events from Members_415 as M left join Volunteers_415 as E on m.Member_ID = E.Member_ID group by (M.Member_ID);
++-----------+------------------------+------------------+
+| Member_ID | Name                   | Number_of_Events |
++-----------+------------------------+------------------+
+|   2022001 | Anoushka Vemireddy     |                3 |
+|   2022002 | Gautham Krithiwas      |                2 |
+|   2022003 | Harikrishnan G         |                3 |
+|   2022004 | Hitesh Singh           |                2 |
+|   2022005 | ANEESH K B             |                3 |
+|   2022006 | AVANISH SHENOY         |                2 |
+|   2022007 | B MONISH MOGER         |                3 |
+|   2022008 | AYUSH SINHA            |                2 |
+|   2022009 | Deepthi Bommisetty     |                2 |
+|   2022010 | Hansini                |                1 |
+|   2022011 | G Roshni               |                0 |
+|   2022012 | Chaitra                |                2 |
+|   2022013 | K Srinivasa Ankita     |                3 |
+|   2022014 | Pannuru Sidhvi         |                2 |
+|   2022015 | Lia Jane Dsouza        |                2 |
+|   2022016 | Gade Vishnupriya Reddy |                3 |
++-----------+------------------------+------------------+
+16 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select * from Event_415;
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+| Event_ID | Event_Name       | Manager_ID | Event_Type  | Event_Date | Event_Time | Venue                          | Volunteer_count | Org_ID |
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+| E22001   | Blood Donation   |    2022007 | Health      | 2022-09-13 | 08:00:00   | PES University Bangalore       |               0 | ORG004 |
+| E22002   | English for all  |    2022010 | Education   | 2023-05-10 | 09:30:00   | Government School Banashankari |               0 | ORG005 |
+| E22003   | Plantation Drive |    2022003 | Environment | 2022-09-13 | 06:00:00   | Cubbon Park, Bangalore         |               0 | ORG002 |
+| E22004   | Health Drive     |    2022009 | Health      | 2023-01-17 | 10:00:00   | RV college Bangalore           |               0 | ORG003 |
+| E22005   | Swatch Barath    |    2022003 | Environment | 2023-08-13 | 07:00:00   | Lalbagh park                   |               0 | ORG001 |
++----------+------------------+------------+-------------+------------+------------+--------------------------------+-----------------+--------+
+5 rows in set (0.007 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Volunteer_Count = select count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.Event_ID =V.Event_ID group by(V.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.E...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Volunteer_Count = count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> drop procedure setVol();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '()' at line 1
+MariaDB [volcause_415]> drop procedure setVol;
+ERROR 1305 (42000): PROCEDURE volcause_415.setVol does not exist
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Volunteer_Count = count(V.Member_ID) from Volunteers_415 as V group by(V.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Volunteers_415 as V group by(V.Event_ID);
+END' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = count(V.Member_ID) from Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group by(V.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Event_415 as E join Volunteers_415 as V on E.Event_ID = V.Event_ID group...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = count(V.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Eve...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> count(V.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'count(V.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID =...' at line 1
+MariaDB [volcause_415]> count(Volunteers_415.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'count(Volunteers_415.Member_ID) from Event_415 join Volunteers_415 on Event_4...' at line 1
+MariaDB [volcause_415]> select count(Volunteers_415.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
++---------------------------------+
+| count(Volunteers_415.Member_ID) |
++---------------------------------+
+|                               7 |
+|                               7 |
+|                               4 |
+|                               5 |
+|                              12 |
++---------------------------------+
+5 rows in set (0.014 sec)
+
+MariaDB [volcause_415]> select count(Volunteers_415.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
++---------------------------------+
+| count(Volunteers_415.Member_ID) |
++---------------------------------+
+|                               7 |
+|                               7 |
+|                               4 |
+|                               5 |
+|                              12 |
++---------------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = count(Volunteers_415.Member_ID) from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Eve...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = countval from (select count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID););
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from (select count(Volunteers_415.Member_ID) as countVal from Event_415 join ...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = t2.countval from (select count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID)) as t2 ;
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from (select count(Volunteers_415.Member_ID) as countVal from Event_415 join ...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> select Event_415.event_id,count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID)
+    -> ;
++----------+----------+
+| event_id | countVal |
++----------+----------+
+| E22001   |        7 |
+| E22002   |        7 |
+| E22003   |        4 |
+| E22004   |        5 |
+| E22005   |       12 |
++----------+----------+
+5 rows in set (0.005 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = t2.countval from Event_415 inner join (select Event_415.event_id as EID,count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID) as t2)
+    -> ON Event_415.event_ID = t2.EID;
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from Event_415 inner join (select Event_415.event_id as EID,count(Volunteers_...' at line 3
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]> select Event_415.event_id as EID,count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID) as t2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as t2' at line 1
+MariaDB [volcause_415]> select Event_415.event_id as EID,count(Volunteers_415.Member_ID) as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID group by(Volunteers_415.Event_ID);
++--------+----------+
+| EID    | countVal |
++--------+----------+
+| E22001 |        7 |
+| E22002 |        7 |
+| E22003 |        4 |
+| E22004 |        5 |
+| E22005 |       12 |
++--------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> DELIMITER $$
+MariaDB [volcause_415]> CREATE PROCEDUre setVol()
+    -> BEGIN
+    -> UPDATE Event_415 SET Event_415.Volunteer_Count = t2.countval
+    -> from (select Event_415.event_id as EID,count(Volunteers_415.Member_ID)
+    -> as countVal from Event_415 join Volunteers_415 on Event_415.Event_ID = Volunteers_415.Event_ID
+    -> group by(Volunteers_415.Event_ID) as t2)
+    -> END;$$
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from (select Event_415.event_id as EID,count(Volunteers_415.Member_ID)
+as co...' at line 4
+MariaDB [volcause_415]> DELIMITER ;
+MariaDB [volcause_415]>

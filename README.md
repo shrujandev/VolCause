@@ -13,9 +13,9 @@ ti=rigger
 1} age 2. same day event
 
 aggregations
-1)no of volunteers
-no of event /manager
-no of event / volunteer
+1)no of volunteers//done
+no of event /manager//done
+no of event / volunteer//done
 
 set ops
 
