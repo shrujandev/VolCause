@@ -19,3 +19,18 @@ UPDATE Event_415 join T2 on Event_415.Event_ID = T2.EID SET Event_415.Volunteer_
 Drop table T2;
 END;$$
 DELIMITER ;
+
+DELIMITER $$
+create procedure createEventDet()
+BEGIN
+drop table if exists Event_Details_415;
+CREATE TABLE Event_Details_415(
+    Event_Name varchar(255),
+    Event_Type varchar(255),
+    Event_Date date,
+    Manager_Name varchar(255),
+    Organization varchar(255)
+
+);
+END;$$
+DELIMITER ;
