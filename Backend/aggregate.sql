@@ -13,4 +13,5 @@ select M.Member_Id as Member_ID,M.name as Name,count(E.event_ID) as Number_of_Ev
 from Members_415 as M left join Volunteers_415 as E on m.Member_ID = E.Member_ID group by (M.Member_ID);
 
 
---
+--Number of event in a day
+select E.event_date as Date , count(e.event_id) as Number_of_events from Event_415 as E group by (e.event_date);

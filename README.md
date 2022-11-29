@@ -4,13 +4,14 @@ A full stack volunteer management system
 
 ## To Do
 
-# Procedure
+# functions
 
-1)backup 2)
-create view for event
+day till event //done
 
-ti=rigger
-1} age 2. same day event
+trigger
+
+1. age//done
+2. same day event //done
 
 aggregations
 1)no of volunteers//done
@@ -21,6 +22,9 @@ set ops
 
 1.  set of manager and vol contacts
 
-fcuntions
+procedures
 age setting // done
-no of volunteer setting
+no of volunteer setting//done
+
+cursors
+create event details table //done
