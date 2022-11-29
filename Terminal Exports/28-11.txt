@@ -1,0 +1,519 @@
+  bin    ./mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 32
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use volcause_415;
+Database changed
+MariaDB [volcause_415]>
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M join Volunteers_415 where Volunteers_415.Event_ID = "E22005";
++-----------+------------------------+--------+
+| Member_ID | Name                   | Gender |
++-----------+------------------------+--------+
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
++-----------+------------------------+--------+
+208 rows in set (0.005 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M join Volunteers_415 where Volunteers_415.Event_ID = "E22001";
++-----------+------------------------+--------+
+| Member_ID | Name                   | Gender |
++-----------+------------------------+--------+
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022010 | Hansini                | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022011 | G Roshni               | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
++-----------+------------------------+--------+
+112 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M join Volunteers_415 where Volunteers_415.Event_ID = "E22001" group by Member_ID;
++-----------+------------------------+--------+
+| Member_ID | Name                   | Gender |
++-----------+------------------------+--------+
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022010 | Hansini                | Female |
+|   2022011 | G Roshni               | Female |
+|   2022012 | Chaitra                | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
++-----------+------------------------+--------+
+16 rows in set (0.006 sec)
+
+MariaDB [volcause_415]> select * from volunteers_415;
++----------+-----------+
+| Event_ID | Member_ID |
++----------+-----------+
+| E22001   |   2022001 |
+| E22001   |   2022003 |
+| E22001   |   2022005 |
+| E22001   |   2022006 |
+| E22001   |   2022004 |
+| E22001   |   2022013 |
+| E22001   |   2022016 |
+| E22002   |   2022014 |
+| E22002   |   2022015 |
+| E22002   |   2022003 |
+| E22002   |   2022009 |
+| E22002   |   2022012 |
+| E22002   |   2022013 |
+| E22002   |   2022007 |
+| E22003   |   2022015 |
+| E22003   |   2022014 |
+| E22003   |   2022016 |
+| E22003   |   2022007 |
+| E22004   |   2022008 |
+| E22004   |   2022001 |
+| E22004   |   2022002 |
+| E22004   |   2022003 |
+| E22004   |   2022005 |
+| E22005   |   2022001 |
+| E22005   |   2022002 |
+| E22005   |   2022016 |
+| E22005   |   2022004 |
+| E22005   |   2022005 |
+| E22005   |   2022006 |
+| E22005   |   2022007 |
+| E22005   |   2022008 |
+| E22005   |   2022009 |
+| E22005   |   2022010 |
+| E22005   |   2022011 |
+| E22005   |   2022012 |
+| E22005   |   2022013 |
++----------+-----------+
+36 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M join (select * from Volunteers_415 where Volunteers_415.Event_ID = "E22001");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 2
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M join Volunteers_415 as V where V.Event_ID = "E22001" and M.Member_ID=V.Member_ID;
++-----------+------------------------+--------+
+| Member_ID | Name                   | Gender |
++-----------+------------------------+--------+
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
++-----------+------------------------+--------+
+7 rows in set (0.005 sec)
+
+MariaDB [volcause_415]> select E.event_name as Event_Name ,E.event_type as Event_Type ,E.event_date as Date ,M.Name as Manager_Name,
+    -> O.Org_Name as Organization from Event_415 as E join MEMBERS_415 as M On E.Manager_ID = M.Member_ID Join
+    -> Organization_415 as O on E.Org_ID = O.Org_ID;
++------------------+-------------+------------+--------------------+--------------+
+| Event_Name       | Event_Type  | Date       | Manager_Name       | Organization |
++------------------+-------------+------------+--------------------+--------------+
+| Blood Donation   | Health      | 2022-09-13 | B MONISH MOGER     | JCI          |
+| English for all  | Education   | 2023-05-10 | Hansini            | SSVVEY       |
+| Plantation Drive | Environment | 2022-09-13 | Harikrishnan G     | Lions        |
+| Health Drive     | Health      | 2023-01-17 | Deepthi Bommisetty | RED CROSS    |
+| Swatch Barath    | Environment | 2023-08-13 | Harikrishnan G     | Rotary       |
++------------------+-------------+------------+--------------------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M left join Volunteers_415 as V on M.Member_ID = V.Member_ID where V.Member_ID IS NULL;
+Empty set (0.004 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M left join Volunteers_415 as V on M.Member_ID = V.Member_ID;
++-----------+------------------------+--------+
+| Member_ID | Name                   | Gender |
++-----------+------------------------+--------+
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022001 | Anoushka Vemireddy     | Female |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022002 | Gautham Krithiwas      | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022003 | Harikrishnan G         | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022004 | Hitesh Singh           | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022005 | ANEESH K B             | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022006 | AVANISH SHENOY         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022007 | B MONISH MOGER         | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022008 | AYUSH SINHA            | Male   |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022009 | Deepthi Bommisetty     | Female |
+|   2022010 | Hansini                | Female |
+|   2022011 | G Roshni               | Female |
+|   2022012 | Chaitra                | Female |
+|   2022012 | Chaitra                | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022013 | K Srinivasa Ankita     | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022014 | Pannuru Sidhvi         | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022015 | Lia Jane Dsouza        | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
+|   2022016 | Gade Vishnupriya Reddy | Female |
++-----------+------------------------+--------+
+36 rows in set (0.001 sec)
+
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V.Member_ID=M.Member_ID);
+Empty set (0.010 sec)
+
+MariaDB [volcause_415]> delete from Volunteers_415 as V where V.event_ID="E22005" and V.Member_Id=2022011;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as V where V.event_ID="E22005" and V.Member_Id=2022011' at line 1
+MariaDB [volcause_415]> delete from Volunteers_415 where event_ID="E22005" and Member_Id=2022011;
+Query OK, 1 row affected (0.019 sec)
+
+MariaDB [volcause_415]> MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V.Member_ID=M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V....' at line 1
+MariaDB [volcause_415]> MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V.Member_ID=M.Member_ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V....' at line 1
+MariaDB [volcause_415]> select M.Member_ID as Member_ID,M.name as Name,M.gender as Gender from
+    -> MEMBERS_415 as M where not exists (select * from Volunteers_415 as V where V.Member_ID=M.Member_ID);
++-----------+----------+--------+
+| Member_ID | Name     | Gender |
++-----------+----------+--------+
+|   2022011 | G Roshni | Female |
++-----------+----------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [volcause_415]>
