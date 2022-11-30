@@ -9,7 +9,7 @@ def create():
         name = st.text_input("Name")
         gender = st.radio("Gender", ["Male", "Female"])
     with col2:
-        dob = st.date_input("DOB")
+        dob = st.text_input("DOB(in YYYY/MM/DD)")
         blood = st.selectbox(
             "Blood Group", ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"])
         address = st.text_area("Address")
