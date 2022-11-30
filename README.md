@@ -20,7 +20,10 @@ no of event / volunteer//done
 
 set ops
 
-1.  set of manager and vol contacts
+1.  manager not member set diff
+2.  vol member intersection
+3.  org and event
+4.  unoin all same as above.
 
 procedures
 age setting // done
