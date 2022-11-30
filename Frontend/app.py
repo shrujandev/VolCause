@@ -24,7 +24,7 @@ def main():
     menu = ["ADD", "View", "Edit", "Remove"]
     choice = st.sidebar.selectbox("Menu", menu)
     create_table()
-    if choice = "ADD":
+    if choice == "ADD":
         st.subheader("Enter details:")
         create()
     elif choice == "View":
