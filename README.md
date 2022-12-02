@@ -22,8 +22,8 @@ set ops
 
 1.  manager not member set diff
 2.  vol member intersection
-3.  org and event
-4.  unoin all same as above.
+3.  org and event //done
+4.  unoin all same as above. //done
 
 procedures
 age setting // done
@@ -31,3 +31,5 @@ no of volunteer setting//done
 
 cursors
 create event details table //done
+
+front end //done

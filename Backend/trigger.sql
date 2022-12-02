@@ -18,7 +18,9 @@ DELIMITER $$
 create trigger clash_check
 before insert on Volunteers_415 for each row
 BEGIN
-if(exists(select 1 from Event_415 E1,Event_415 E2 join volunteers_415 as V where v.member_id = new.member_id and v.event_id != new.event_id and v.event_id = E1.event_id and E2.event_id = new.event_id and E1.event_date = E2.event_date )) then
+if(exists(select 1 from Event_415 E1,Event_415 E2 join volunteers_415 as V
+where v.member_id = new.member_id and v.event_id != new.event_id 
+and v.event_id = E1.event_id and E2.event_id = new.event_id and E1.event_date = E2.event_date )) then
 signal sqlstate '45000' set message_text ='Multiple Event signup on the same day is not allowed ';
 end if;
 end $$
