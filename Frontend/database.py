@@ -54,6 +54,15 @@ def delete_data(selected_member):
     mydb.commit()
 
 
+def set_age():
+    c.execute('Call getAge();')
+    mydb.commit()
+
+def set_count():
+    c.execute('Call setVol();')
+    mydb.commit()
+
+
 def ret_query(command):
     try:
         c.execute(command)

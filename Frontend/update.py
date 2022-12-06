@@ -1,7 +1,7 @@
 import datetime
 import pandas as pd
 import streamlit as st
-from database import view_all_data, view_only_members, get_details, edit_details
+from database import view_all_data, view_only_members, get_details, edit_details, set_age, set_count
 
 
 def update():
@@ -38,6 +38,12 @@ def update():
             edit_details(new_memberID, new_name, new_gender,
                          new_dob, Age, new_blood, new_address, Member_ID, Name, Gender, DOB, Blood_group, Address)
             st.success("Successfully Updated Member :{}".format(Name))
+        if st.button("Set Age"):
+            set_age()
+            st.success("Successfully set age in members")
+        if st.button("Update Volunteer Count"):
+            set_count()
+            st.success("Successfully Updated Count")
 
     result2 = view_all_data()
     df2 = pd.DataFrame(result2, columns=[
